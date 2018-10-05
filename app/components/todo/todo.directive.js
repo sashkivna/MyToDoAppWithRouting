@@ -2,7 +2,8 @@ angular.module('todo.module')
     .directive('todo', function () {
         return {
             restrict: 'E',
-            templateUrl: 'toDo/toDo.template.html',
+            templateUrl: 'components/todo/todo.template.html',
+
             scope: {
                 tasks: '='
             },
@@ -23,7 +24,6 @@ angular.module('todo.module')
                 $scope.delete = function () {
                     $scope.tasks.splice(this.$index, 1);
                 }
-
             }
         };
     });
