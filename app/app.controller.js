@@ -1,3 +1,3 @@
 angular.module('MyApp')
-    .controller('MyController', ['$scope', function ($scope) {
-}]);
+    .controller('MyController', function ($scope) {
+});
