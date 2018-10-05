@@ -1,0 +1,7 @@
+<form ng-submit="add(title)">
+    <input ng-model="title">
+</form>
+<div ng-repeat="todo in tasks track by $index">
+    <input type="checkbox" ng-model="task.done"/>
+    <span ng-class='{done: task.done}'>{{ todo.task }}  <button ng-click="delete()">x</button></span>
+</div>
