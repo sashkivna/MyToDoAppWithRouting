@@ -1,0 +1,5 @@
+<div ng-controller="usersCntr">
+    <ul ng-repeat="user in usersFromCashe track by $index">
+        <li ng-click="showTodo()">{{user.email}}</li>
+    </ul>
+</div>
