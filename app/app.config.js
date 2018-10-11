@@ -24,15 +24,4 @@ angular.module('app.module')
         $stateProvider.state(mainState);
         $stateProvider.state(loginState);
         $stateProvider.state(usersState);
-    })
-    .run(function ($rootScope, $location) {
-        $rootScope.$on('$stateChangeStart',
-            function (evt, next) {
-                if (!$rootScope.currentUser) {
-                    $location.path('/login');
-                } else {
-                    $location.path('/main');
-                }
-
-            });
     });

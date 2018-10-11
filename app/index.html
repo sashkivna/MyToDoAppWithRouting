@@ -1,20 +1,25 @@
 <!DOCTYPE html>
-<html ng-app="MyApp">
+<html ng-app="app.module">
 <head>
     <title></title>
     <link rel="stylesheet" type="text/css"
           href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css"/>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body ng-controller="MyController">
-<hr/>
-<label>Add your todo here:</label>
+<body>
 
-<todo tasks="tasks"></todo>
+<a ui-sref="main" ui-sref-active="active">main</a>
+<a ui-sref="login" ui-sref-active="active">login</a>
+
+<ui-view></ui-view>
 
 <script src="../node_modules/angular/angular.js"></script>
-<script src="app.js"></script>
-<script src="app.controller.js"></script>
+<script src="../node_modules/ui-router-0.4.3/release/angular-ui-router.js"></script>
+<script src="../node_modules/ngstorage/ngStorage.js"></script>
+<script src="app-module.js"></script>
+<script src="app.config.js"></script>
+<script src="app.run.js"></script>
+<script src="users-todo/users-todo.controller.js"></script>
 <script src="components/todo/todo.module.js"></script>
 <script src="components/todo/todo.directive.js"></script>
 </body>
