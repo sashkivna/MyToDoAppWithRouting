@@ -4,8 +4,7 @@ angular.module('app.module')
             name: 'main',
             url: '/main',
             template: '<label>Add your todo here:</label>\n' +
-                '<todo tasks="tasks"></todo>',
-            controller: ''
+                '<todo tasks="tasks"></todo>'
         };
 
         let usersState = {
@@ -19,6 +18,7 @@ angular.module('app.module')
             name: 'login',
             url: '/login',
             templateUrl: 'login/register-template.html',
+            controller: 'loginController'
         };
 
         $stateProvider.state(mainState);
