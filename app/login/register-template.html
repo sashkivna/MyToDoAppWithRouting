@@ -1,1 +1,34 @@
-<div>here will be login </div>
+<form>
+    <div>
+        <h2>Register</h2>
+        <p>Please fill in this form to create an account.</p>
+        <hr>
+        <label><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" ng-model="registeredEmail" required>
+        <label><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" ng-model="registeredPass" required>
+        <div>
+            <button type="submit" ng-disabled="isRegisterButtonDisabled" class="registerbtn" ng-click="register(registeredEmail, registeredPass)">Register
+            </button>
+        </div>
+    </div>
+    <h1>hello {{user}}</h1>
+    <hr>
+    <div>
+        <p>Already have an account? <a href="#" ng-click="changeState()">Log in</a>.</p>
+    </div>
+</form>
+
+
+<form>
+    <h2>Login Form</h2>
+    <div>
+        <label><b>Login</b></label>
+        <input type="text" placeholder="Enter Username" ng-model="mail" required>
+        <label><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" ng-model="pass" required>
+        <div>
+            <button type="submit" ng-click="login(mail, pass)">Login</button>
+        </div>
+    </div>
+</form>
