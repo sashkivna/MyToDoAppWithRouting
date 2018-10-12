@@ -4,6 +4,9 @@ angular.module('app.module')
             $scope.isRegisterButtonDisabled = true;
 
             userService.registerUser(email, password)
+                .catch(function () {
+                    console.log('user already exists')
+                })
                 .finally(function () {
                     $scope.isRegisterButtonDisabled = false;
                 });

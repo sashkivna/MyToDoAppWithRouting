@@ -1,6 +1,6 @@
 angular.module('app.module')
     .factory('userService', function ($q, $timeout) {
-        var users = [],
+        var users = JSON.parse(localStorage.getItem('users')) || [],
             currentUser = null;
 
         function getCurrentUser() {
@@ -17,10 +17,13 @@ angular.module('app.module')
                     if (isUserEmailExist) {
                         reject();
                     } else {
+                        debugger
                         users.push({
                             email: email,
                             password: password
                         });
+
+                        localStorage.setItem('users', JSON.stringify(users));
 
                         resolve();
                     }
