@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/sashkivna/viewRendering#readme",
   "dependencies": {
+    "@uirouter/angularjs": "^1.0.20",
     "angular": "^1.7.4",
     "angularjs": "0.0.1",
     "jquery": "^3.3.1"

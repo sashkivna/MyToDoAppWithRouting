@@ -1,3 +1,15 @@
 .done {
     text-decoration: line-through;
 }
+
+body {
+    padding-left: 10%;
+}
+
+.todos {
+    display: flex;
+}
+
+.pending {
+    text-decoration: none;
+}
