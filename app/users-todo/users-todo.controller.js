@@ -3,7 +3,6 @@ angular.module('app.module')
         $scope.users = JSON.parse(localStorage.getItem('users')) || [];
 
         $scope.showTodo = function () {
-            debugger;
             $state.go('main');
         }
     });

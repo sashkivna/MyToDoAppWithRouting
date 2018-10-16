@@ -1,6 +1,6 @@
 angular.module('app.module')
     .controller('mainController', function ($scope, todoService) {
-        $scope.tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        $scope.tasks = userService.getTasks();
 
         $scope.$watchCollection('tasks', function (tasks) {
             todoService.updateTasks(tasks);

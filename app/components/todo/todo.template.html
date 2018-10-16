@@ -3,8 +3,8 @@
 </form>
 <div class="row" ng-repeat="todo in tasks track by $index">
     <button class="col-sm" ng-click="delete($index)">x</button>
-    <input id={{"che"+$index}} class="col-sm" type="checkbox" ng-model="task.done"/>
-    <span class="col-sm" ng-class='{done: task.done}' ng-click="showDetails($index, todo)">{{ todo.task }} </span>
+    <input id={{"che"+$index}} class="col-sm" type="checkbox" ng-model="todo.status.task.done"/>
+    <span class="col-sm" ng-class='{done: todo.status.task.done}'>{{ todo.task }} </span>
 </div>
 
 {{tasks| json}}

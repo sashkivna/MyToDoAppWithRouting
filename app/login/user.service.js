@@ -57,11 +57,16 @@ angular.module('app.module')
                 }, 1000);
             });
         }
+        
+        function getTasks() {
+            return JSON.parse(localStorage.getItem('tasks')) || [];
+        }
 
         return {
             users: users,
             getCurrentUser: getCurrentUser,
             registerUser: registerUser,
-            loginUser: loginUser
+            loginUser: loginUser,
+            getTasks: getTasks
         }
     });

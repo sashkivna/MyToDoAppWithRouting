@@ -8,9 +8,6 @@ angular.module('todo.module')
                 tasks: '='
             },
 
-            controller: function () {
-            },
-
             link: function ($scope) {
                 $scope.add = function (title) {
                     if (title === undefined || title.length === 0) {
@@ -23,8 +20,13 @@ angular.module('todo.module')
                             + currentdate.getHours() + ":"
                             + currentdate.getMinutes() + ":"
                             + currentdate.getSeconds();
-                        $scope.tasks.push({task: $scope.title, cteated: datetime, done: false});
-                        console.log($scope.tasks);
+                        $scope.tasks.push({
+                            task: $scope.title,
+                            cteated: datetime,
+                            status: {
+                                task: {done: false}
+                            }
+                        });
                         $scope.title = "";
                     }
                 };

@@ -1,5 +1,5 @@
 angular.module('app.module')
-    .controller('loginController', function ($scope, userService, $state) {
+    .controller('loginController', function ($scope, $state, userService) {
         $scope.register = function (email, password) {
             $scope.isRegisterButtonDisabled = true;
 
