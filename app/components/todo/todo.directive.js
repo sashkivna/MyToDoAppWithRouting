@@ -8,9 +8,10 @@ angular.module('todo.module')
                 tasks: '='
             },
 
-            link: function ($scope) {
-                    $scope.tasks = [];
+            controller: function () {
+            },
 
+            link: function ($scope) {
                 $scope.add = function (title) {
                     if (title === undefined || title.length === 0) {
                         alert("You tried to add empty task, pls type some description");
@@ -22,7 +23,8 @@ angular.module('todo.module')
                             + currentdate.getHours() + ":"
                             + currentdate.getMinutes() + ":"
                             + currentdate.getSeconds();
-                        $scope.tasks.push({task: $scope.title, cteatedAt: datetime, /*user: currentUser,*/ checked: false});
+                        $scope.tasks.push({task: $scope.title, cteated: datetime, done: false});
+                        console.log($scope.tasks);
                         $scope.title = "";
                     }
                 };
@@ -30,13 +32,6 @@ angular.module('todo.module')
                 $scope.delete = function ($index) {
                     $scope.tasks.splice($index, 1);
                 };
-
-                $scope.showDetails = function ($index) {
-                    if(document.getElementById("che"+$index).checked === true) {
-                        $scope.tasks[$index].checked = !$scope.tasks[$index].checked;
-                    }
-                    return $index;
-                }
             }
         };
     });

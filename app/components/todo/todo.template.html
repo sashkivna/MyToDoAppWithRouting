@@ -1,8 +1,10 @@
 <form ng-submit="add(title)">
     <input ng-model="title">
 </form>
-<div  class="row" ng-repeat="todo in tasks track by $index">
-    <button  class="col-sm" ng-click="delete($index)">x</button>
+<div class="row" ng-repeat="todo in tasks track by $index">
+    <button class="col-sm" ng-click="delete($index)">x</button>
     <input id={{"che"+$index}} class="col-sm" type="checkbox" ng-model="task.done"/>
-    <span class="col-sm" ng-class='{done: todo.checked}' ng-click="showDetails($index, todo)">{{ todo.task }} </span>
+    <span class="col-sm" ng-class='{done: task.done}' ng-click="showDetails($index, todo)">{{ todo.task }} </span>
 </div>
+
+{{tasks| json}}

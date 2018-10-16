@@ -17,7 +17,6 @@ angular.module('app.module')
                     if (isUserEmailExist) {
                         reject();
                     } else {
-                        debugger
                         users.push({
                             email: email,
                             password: password
@@ -49,7 +48,7 @@ angular.module('app.module')
 
                         resolve();
 
-                        console.log("current user from service " + currentUser);
+                        console.log("current user from service " + currentUser.email);
                     } else {
                         console.log("Pls enter correct data for loggining");
 
