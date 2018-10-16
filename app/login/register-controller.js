@@ -16,9 +16,6 @@ angular.module('app.module')
             userService.loginUser(email, pass)
                 .then(function () {
                     $scope.user = userService.getCurrentUser();
-
-                    console.log("current user from promise" + $scope.user);
-
                     $state.go('users');
                 })
                 .catch(function () {

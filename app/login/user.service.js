@@ -45,7 +45,6 @@ angular.module('app.module')
                             password: password
                         };
 
-
                         resolve();
 
                         console.log("current user from service " + currentUser.email);
