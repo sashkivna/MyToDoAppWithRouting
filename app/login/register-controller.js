@@ -1,5 +1,5 @@
 angular.module('app.module')
-    .controller('loginController', function ($scope, userService) {
+    .controller('loginController', function ($scope, $state, userService) {
         $scope.register = function (email, password) {
             $scope.isRegisterButtonDisabled = true;
 
@@ -16,11 +16,10 @@ angular.module('app.module')
             userService.loginUser(email, pass)
                 .then(function () {
                     $scope.user = userService.getCurrentUser();
-
-                    console.log("current user from promise" + $scope.user);
+                    $state.go('users');
                 })
                 .catch(function () {
 
-                })
+                });
         };
     });

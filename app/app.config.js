@@ -3,8 +3,9 @@ angular.module('app.module')
         let mainState = {
             name: 'main',
             url: '/main',
-            template: '<label>Add your todo here:</label>\n' +
-                '<todo tasks="tasks"></todo>'
+            template: '<label ng-controller="mainController">Add your todo here:</label>\n' +
+                '<todo tasks="tasks" on-change="onTasksChange()"></todo>',
+            controller: 'mainController'
         };
 
         let usersState = {

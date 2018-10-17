@@ -1,7 +1,7 @@
 angular.module('app.module')
     .factory('userService', function ($q, $timeout) {
         var users = JSON.parse(localStorage.getItem('users')) || [],
-            currentUser = null;
+            currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
         function getCurrentUser() {
             return currentUser;
@@ -17,7 +17,6 @@ angular.module('app.module')
                     if (isUserEmailExist) {
                         reject();
                     } else {
-                        debugger
                         users.push({
                             email: email,
                             password: password
@@ -46,10 +45,11 @@ angular.module('app.module')
                             password: password
                         };
 
+                        localStorage.setItem('currentUser', JSON.stringify(currentUser));
 
                         resolve();
 
-                        console.log("current user from service " + currentUser);
+                        console.log("current user from service " + currentUser.email);
                     } else {
                         console.log("Pls enter correct data for loggining");
 
@@ -60,10 +60,20 @@ angular.module('app.module')
             });
         }
 
+        function getTasks() {
+            return JSON.parse(localStorage.getItem('tasks')) || [];
+        }
+
+        function getUsers() {
+            return JSON.parse(localStorage.getItem('users')) || [];
+        }
+
         return {
             users: users,
             getCurrentUser: getCurrentUser,
             registerUser: registerUser,
-            loginUser: loginUser
+            loginUser: loginUser,
+            getTasks: getTasks,
+            getUsers: getUsers
         }
     });
