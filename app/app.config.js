@@ -4,7 +4,7 @@ angular.module('app.module')
             name: 'main',
             url: '/main',
             template: '<label ng-controller="mainController">Add your todo here:</label>\n' +
-                '<todo tasks="tasks"></todo>',
+                '<todo tasks="tasks" on-change="onTasksChange()"></todo>',
             controller: 'mainController'
         };
 

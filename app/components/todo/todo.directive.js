@@ -5,34 +5,31 @@ angular.module('todo.module')
             templateUrl: 'components/todo/todo.template.html',
 
             scope: {
-                tasks: '='
+                tasks: '=',
+                onChange: '&'
             },
 
-            link: function ($scope) {
+            controller: function ($scope) {
                 $scope.add = function (title) {
-                    if (title === undefined || title.length === 0) {
+                    if (!title) {
                         alert("You tried to add empty task, pls type some description");
                     } else {
-                        let currentdate = new Date();
-                        let datetime = currentdate.getDate() + "/"
-                            + (currentdate.getMonth() + 1) + "/"
-                            + currentdate.getFullYear() + " @ "
-                            + currentdate.getHours() + ":"
-                            + currentdate.getMinutes() + ":"
-                            + currentdate.getSeconds();
                         $scope.tasks.push({
-                            task: $scope.title,
-                            cteated: datetime,
-                            status: {
-                                task: {done: false}
-                            }
+                            title: $scope.title,
+                            date: new Date(),
+                            isChecked: false
                         });
+
                         $scope.title = "";
                     }
+
+                    $scope.onChange();
                 };
 
                 $scope.delete = function ($index) {
                     $scope.tasks.splice($index, 1);
+
+                    $scope.onChange();
                 };
             }
         };

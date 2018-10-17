@@ -1,8 +1,8 @@
 angular.module('app.module')
-    .controller('mainController', function ($scope, todoService) {
+    .controller('mainController', function ($scope, todoService, userService) {
         $scope.tasks = userService.getTasks();
 
-        $scope.$watchCollection('tasks', function (tasks) {
-            todoService.updateTasks(tasks);
-        });
+        $scope.onTasksChange = function () {
+            todoService.updateTasks($scope.tasks);
+        }
     });

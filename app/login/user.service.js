@@ -1,7 +1,7 @@
 angular.module('app.module')
     .factory('userService', function ($q, $timeout) {
         var users = JSON.parse(localStorage.getItem('users')) || [],
-            currentUser = null;
+            currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
         function getCurrentUser() {
             return currentUser;
@@ -45,6 +45,8 @@ angular.module('app.module')
                             password: password
                         };
 
+                        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
                         resolve();
 
                         console.log("current user from service " + currentUser.email);
@@ -57,7 +59,7 @@ angular.module('app.module')
                 }, 1000);
             });
         }
-        
+
         function getTasks() {
             return JSON.parse(localStorage.getItem('tasks')) || [];
         }
