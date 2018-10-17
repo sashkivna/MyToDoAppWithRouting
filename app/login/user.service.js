@@ -64,11 +64,16 @@ angular.module('app.module')
             return JSON.parse(localStorage.getItem('tasks')) || [];
         }
 
+        function getUsers() {
+            return JSON.parse(localStorage.getItem('users')) || [];
+        }
+
         return {
             users: users,
             getCurrentUser: getCurrentUser,
             registerUser: registerUser,
             loginUser: loginUser,
-            getTasks: getTasks
+            getTasks: getTasks,
+            getUsers: getUsers
         }
     });

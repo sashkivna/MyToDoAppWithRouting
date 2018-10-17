@@ -1,6 +1,6 @@
 angular.module('app.module')
     .controller('usersCntr', function ($scope, $state, userService) {
-        $scope.users = JSON.parse(localStorage.getItem('users')) || [];
+        $scope.users = userService.getUsers();
 
         $scope.showTodo = function () {
             $state.go('main');
