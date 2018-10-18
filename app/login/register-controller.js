@@ -16,7 +16,8 @@ angular.module('app.module')
             userService.loginUser(email, pass)
                 .then(function () {
                     $scope.user = userService.getCurrentUser();
-                    $state.go('users');
+
+                    $state.go('users.list');
                 })
                 .catch(function () {
 

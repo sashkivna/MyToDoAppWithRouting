@@ -6,7 +6,8 @@ angular.module('todo.module')
 
             scope: {
                 tasks: '=',
-                onChange: '&'
+                onChange: '&',
+                isDisabled: '<?'
             },
 
             controller: function ($scope) {
