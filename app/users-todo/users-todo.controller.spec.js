@@ -37,7 +37,6 @@ describe('usersCntr', function () {
         spyOn(userService, 'getUsers').and.returnValue(mockedUsers);
         userService.currentUser = mockedCurrentUser;
         spyOn(userService, 'getCurrentUser').and.returnValue(mockedCurrentUser);
-        //spyOn($rootScope, 'logout').and.returnValue(mockedCurrentUser);
         spyOn($rootScope, 'logout').and.callThrough();
         spyOn($state, 'go');
 
@@ -56,16 +55,10 @@ describe('usersCntr', function () {
     });
 
     it('should logout user', inject(function ($state) {
-        //expect(userService.getCurrentUser).toHaveBeenCalled();
-        // mock current user name
         expect(userService.currentUser).toBe(mockedCurrentUser);
-        // find button logout and click
         $('button').trigger('click');
-        //$rootScope.logout();
         expect($rootScope.logout).toHaveBeenCalled();
-        // check if current user name is null
         expect(userService.currentUser).toBe(null);
-        // check if state go have been called with 'login'
         expect($state.go).toHaveBeenCalledWith('login');
 
     }));
