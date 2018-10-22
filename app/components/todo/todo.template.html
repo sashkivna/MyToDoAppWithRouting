@@ -1,20 +1,24 @@
-<form ng-submit="add(title)">
-    <input type="text" ng-model="title">
-</form>
+<div>
+    <form ng-submit="add(title)">
+        <input type="text" ng-model="title" ng-disabled="isDisabled">
+    </form>
 
-<div class="row"
-     ng-repeat="task in tasks track by $index">
-    <button class="col-sm"
-            ng-click="delete($index)">x
-    </button>
+    <div class="row"
+         ng-repeat="task in tasks track by $index">
+        <button class="col-sm"
+                ng-click="delete($index)"
+                ng-disabled="isDisabled">x
+        </button>
 
-    <input class="col-sm"
-           type="checkbox"
-           ng-change="onChange()"
-           ng-model="task.isChecked"/>
+        <input class="col-sm"
+               type="checkbox"
+               ng-change="onChange()"
+               ng-model="task.isChecked"
+               ng-disabled="isDisabled"/>
 
-    <span class="col-sm"
-          ng-class="{'done': task.isChecked}">{{ task.title }} </span>
+        <span class="col-sm"
+              ng-class="{'done': task.isChecked}">{{ task.title }} </span>
+    </div>
+
+    {{tasks| json}}
 </div>
-
-{{tasks| json}}

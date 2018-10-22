@@ -19,7 +19,8 @@ angular.module('app.module')
                     } else {
                         users.push({
                             email: email,
-                            password: password
+                            password: password,
+                            id: Math.floor(Math.random() * 100) + 1
                         });
 
                         localStorage.setItem('users', JSON.stringify(users));
@@ -35,16 +36,11 @@ angular.module('app.module')
         function loginUser(email, password) {
             return $q(function (resolve, reject) {
                 $timeout(function () {
-                    var isCredentialsValid = users.some(function (user) {
+                    currentUser = users.find(function (user) {
                         return user.email === email;
                     });
 
-                    if (isCredentialsValid) {
-                        currentUser = {
-                            email: email,
-                            password: password
-                        };
-
+                    if (currentUser && password === currentUser.password) {
                         localStorage.setItem('currentUser', JSON.stringify(currentUser));
 
                         resolve();
@@ -60,10 +56,6 @@ angular.module('app.module')
             });
         }
 
-        function getTasks() {
-            return JSON.parse(localStorage.getItem('tasks')) || [];
-        }
-
         function getUsers() {
             return JSON.parse(localStorage.getItem('users')) || [];
         }
@@ -73,7 +65,6 @@ angular.module('app.module')
             getCurrentUser: getCurrentUser,
             registerUser: registerUser,
             loginUser: loginUser,
-            getTasks: getTasks,
             getUsers: getUsers
         }
     });

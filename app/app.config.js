@@ -1,28 +1,32 @@
 angular.module('app.module')
-    .config(function ($stateProvider) {
-        let mainState = {
-            name: 'main',
-            url: '/main',
-            template: '<label ng-controller="mainController">Add your todo here:</label>\n' +
-                '<todo tasks="tasks" on-change="onTasksChange()"></todo>',
-            controller: 'mainController'
-        };
-
-        let usersState = {
-            name: 'users',
-            url: '/users',
-            templateUrl: 'users-todo/users-todo.template.html',
-            controller: 'usersCntr'
-        };
-
+    .config(function ($stateProvider, $urlRouterProvider) {
         let loginState = {
             name: 'login',
-            url: '/login',
-            templateUrl: 'login/register-template.html',
-            controller: 'loginController'
         };
 
-        $stateProvider.state(mainState);
-        $stateProvider.state(loginState);
-        $stateProvider.state(usersState);
+
+        $stateProvider
+            .state('login', {
+                url: '/login',
+                templateUrl: 'login/register-template.html',
+                controller: 'loginController'
+            })
+            .state('users', {
+                abstract: true,
+                url: '/users',
+                template: '<ui-view></ui-view>',
+                controller: 'usersCntr'
+
+            })
+            .state('users.list', {
+                url: '/list',
+                templateUrl: 'users-todo/users-todo.template.html'
+            })
+            .state('users.detail', {
+                url: '/:id',
+                template: '<label>Add your todo here:</label>\n' +
+                    '<todo tasks="tasks" on-change="onTasksChange()" is-disabled="isDisabled"></todo>',
+                controller: 'mainController'
+            });
+
     });

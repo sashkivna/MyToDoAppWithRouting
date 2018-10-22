@@ -1,7 +1,7 @@
 <div ng-controller="usersCntr">
     <h2>List of logged in users</h2>
     <ul ng-repeat="user in users track by $index">
-        <li ng-click="showTodo()">{{user.email}}</li>
+        <li><a ng-href="#!/users/{{user.id}}">{{user.email}}</a></li>
     </ul>
 </div>
 <button ng-click="logout()">LogOut</button>
