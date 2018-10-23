@@ -52,26 +52,26 @@ describe('loginController', function () {
         spyOn(userService, 'loginUser').and.returnValue($q.resolve());
 
         expect(userService.registerUser).not.toHaveBeenCalled();
-        $('.register-form .email-field input')[0].value += mockedNewRegisteredUser.email;
-        $('.register-form .password-field input')[0].value += mockedNewRegisteredUser.password;
+        $('.register-form .email-field input').val(mockedNewRegisteredUser.email).trigger('change');
+        $('.register-form .password-field input').val(mockedNewRegisteredUser.password).trigger('change');
         $('.register-form button').trigger('click');
+
         expect(userService.registerUser).toHaveBeenCalled();
-        $('.login-form .email-field input')[0].value += mockedNewRegisteredUser.email;
-        $('.login-form .password-field input')[0].value += mockedNewRegisteredUser.password;
+
+        $('.login-form .email-field input').val(mockedNewRegisteredUser.email).trigger('change');
+        $('.login-form .password-field input').val(mockedNewRegisteredUser.password).trigger('change');
         $('.login-form button').trigger('click');
+
         expect(userService.loginUser).toHaveBeenCalled();
     });
 
     it('should not register user if user email already exists', function () {
         spyOn(userService, 'registerUser').and.returnValue($q.reject());
 
-        $('.register-form .email-field input')[0].value += mockedUsers[0].email;
-        $('.register-form .password-field input')[0].value += mockedUsers[0].password;
-
+        $('.register-form .email-field input').val(mockedUsers[0].email).trigger('change');
+        $('.register-form .password-field input').val(mockedUsers[0].password).trigger('change');
         $('.register-form button').trigger('click');
 
-        //expect(userService.registerUser).toHaveBeenCalledWith(mockedUsers[0].email, mockedUsers[0].password);
-        // Expected spy registerUser to have been called with [ 'petya', 'petya' ] but actual calls were [ undefined, undefined ].
-        expect(userService.registerUser).toHaveBeenCalled();
+        expect(userService.registerUser).toHaveBeenCalledWith(mockedUsers[0].email, mockedUsers[0].password);
     });
 });

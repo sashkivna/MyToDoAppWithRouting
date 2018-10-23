@@ -56,7 +56,9 @@ describe('usersCntr', function () {
 
     it('should logout', inject(function ($state) {
         expect(userService.currentUser).toBe(mockedCurrentUser);
+
         $('button').trigger('click');
+
         expect(userService.currentUser).toBe(null);
         expect($state.go).toHaveBeenCalledWith('login');
 
