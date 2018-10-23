@@ -35,11 +35,6 @@ describe('usersCntr', function () {
         });
 
         spyOn(userService, 'getUsers').and.returnValue(mockedUsers);
-        userService.currentUser = mockedCurrentUser;
-        spyOn(userService, 'getCurrentUser').and.returnValue(mockedCurrentUser);
-        spyOn($rootScope, 'logout').and.callThrough();
-        spyOn($state, 'go');
-
 
         element = $compile($templateCache.get('users-todo/users-todo.template.html'))($rootScope);
 
@@ -55,12 +50,14 @@ describe('usersCntr', function () {
     });
 
     it('should logout', inject(function ($state) {
+        spyOn($state, 'go');
+        userService.currentUser = mockedCurrentUser;
+
         expect(userService.currentUser).toBe(mockedCurrentUser);
 
         $('button').trigger('click');
 
         expect(userService.currentUser).toBe(null);
         expect($state.go).toHaveBeenCalledWith('login');
-
     }));
 });
