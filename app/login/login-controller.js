@@ -19,8 +19,5 @@ angular.module('app.module')
 
                     $state.go('users.list');
                 })
-                .catch(function () {
-
-                });
         };
     });

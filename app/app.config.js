@@ -1,5 +1,7 @@
 angular.module('app.module')
-    .config(function ($stateProvider, $urlRouterProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, $qProvider) {
+        $qProvider.errorOnUnhandledRejections(false);
+
         let loginState = {
             name: 'login',
         };
