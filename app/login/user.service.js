@@ -8,7 +8,6 @@ angular.module('app.module')
         }
 
         function registerUser(email, password) {
-            debugger;
             return $q(function (resolve, reject) {
                 $timeout(function () {
                     var isUserEmailExist = users.some(function (user) {
