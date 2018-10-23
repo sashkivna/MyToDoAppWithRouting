@@ -43,6 +43,11 @@ describe('usersCntr', function () {
         $rootScope.$apply();
     }));
 
+    afterEach(function () {
+        element.remove();
+        $rootScope.$destroy();
+    });
+
     it('should show registered users', function () {
         expect(userService.getUsers).toHaveBeenCalled();
 

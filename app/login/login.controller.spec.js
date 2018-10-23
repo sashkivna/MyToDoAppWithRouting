@@ -47,6 +47,11 @@ describe('loginController', function () {
         $rootScope.$apply();
     }));
 
+    afterEach(function () {
+        element.remove();
+        $rootScope.$destroy();
+    });
+
     it('should register user and log in after registration', function () {
         spyOn(userService, 'registerUser').and.returnValue($q.resolve());
         spyOn(userService, 'loginUser').and.returnValue($q.resolve());
@@ -73,5 +78,16 @@ describe('loginController', function () {
         $('.register-form button').trigger('click');
 
         expect(userService.registerUser).toHaveBeenCalledWith(mockedUsers[0].email, mockedUsers[0].password);
+    });
+
+    it('should login user', function () {
+        spyOn(userService, 'loginUser').and.returnValue($q.resolve());
+
+        expect(userService.getCurrentUser()).toBe(null);
+        $('.login-form .email-field input').val(mockedUsers[0].email).trigger('change');
+        $('.login-form .password-field input').val(mockedUsers[0].password).trigger('change');
+        $('.login-form button').trigger('click');
+
+        expect(userService.loginUser).toHaveBeenCalledWith(mockedUsers[0].email, mockedUsers[0].email);
     });
 });
