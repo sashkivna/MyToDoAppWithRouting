@@ -48,16 +48,15 @@ describe('usersCntr', function () {
         $rootScope.$apply();
     }));
 
-    it('should render all users', function () {
+    it('should show registered users', function () {
         expect(userService.getUsers).toHaveBeenCalled();
 
         expect(element.find('li').length).toBe(mockedUsers.length);
     });
 
-    it('should logout user', inject(function ($state) {
+    it('should logout', inject(function ($state) {
         expect(userService.currentUser).toBe(mockedCurrentUser);
         $('button').trigger('click');
-        expect($rootScope.logout).toHaveBeenCalled();
         expect(userService.currentUser).toBe(null);
         expect($state.go).toHaveBeenCalledWith('login');
 
